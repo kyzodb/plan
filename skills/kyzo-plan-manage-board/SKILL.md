@@ -21,6 +21,8 @@ content. `delete_issues` destroys — operator-ordered only.
 is execution order.
 
 **Branch-per-epic.** One epic at a time on one branch; focus and In Progress
-ride the epic's branch; one story In Progress at a time; a task box is flipped
-only by the judge through `check_story_task`. Never use raw `gh` for board
+ride the epic's branch; one story In Progress at a time. Story execution order
+is fixed: `start_story`, then the kyzo-plan-demolition agent clears the
+condemned surface, then development tasks — never development first. A task
+box is flipped only by the judge through `check_story_task`. Never use raw `gh` for board
 writes; never widen or bypass these tools.
