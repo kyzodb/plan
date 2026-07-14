@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 424" width="860" height="424" font-family="ui-sans-serif, 'IBM Plex Sans', system-ui, sans-serif" role="img" aria-label="Where agent tokens go: re-derivation is starved by the story contract, insurance reads by the stance and live monitor, tool sprawl by scoped surfaces, completion churn by the judge.">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace; }
+    </style>
+    <marker id="fern" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3f8a5c"/>
+    </marker>
+  </defs>
+
+  <rect x="2" y="2" width="846" height="420" rx="3" fill="#0c1310" stroke="#263229"/>
+
+  <text x="28" y="40" font-size="18" font-weight="600" fill="#eef3ef">Where agent tokens go</text>
+  <text x="28" y="62" font-size="12.5" fill="#7c8f83">The four drains of agentic development, and the mechanism here that starves each one.</text>
+  <line x1="28" y1="78" x2="832" y2="78" stroke="#263229"/>
+
+  <!-- band 1: re-derivation -->
+  <rect x="28" y="96" width="356" height="64" rx="3" fill="#12100e" stroke="#5a382e"/>
+  <rect x="28" y="96" width="3" height="64" fill="#b0503b"/>
+  <text x="44" y="116" font-size="12.5" font-weight="600" fill="#cf7e6b">Re-derivation</text>
+  <text x="44" y="133" font-size="11" fill="#a9baaf">Re-discovering a root cause, re-confirming a settled</text>
+  <text x="44" y="148" font-size="11" fill="#a9baaf">choice, hunting for where a fix goes.</text>
+  <line x1="390" y1="128" x2="430" y2="128" stroke="#3f8a5c" stroke-width="2" marker-end="url(#fern)"/>
+  <rect x="440" y="96" width="392" height="64" rx="3" fill="#101813" stroke="#35443b"/>
+  <rect x="440" y="96" width="3" height="64" fill="#2F7E52"/>
+  <text x="456" y="116" font-size="12.5" font-weight="600" fill="#eef3ef">The story contract</text>
+  <text x="456" y="133" font-size="11" fill="#a9baaf">Named references, decided vs <tspan class="mono" font-size="10.5">[OPEN]</tspan>, a named verification</text>
+  <text x="456" y="148" font-size="11" fill="#a9baaf">gate — the thinking happens once, upstream.</text>
+
+  <!-- band 2: insurance reads -->
+  <rect x="28" y="170" width="356" height="64" rx="3" fill="#12100e" stroke="#5a382e"/>
+  <rect x="28" y="170" width="3" height="64" fill="#b0503b"/>
+  <text x="44" y="190" font-size="12.5" font-weight="600" fill="#cf7e6b">Insurance reads</text>
+  <text x="44" y="207" font-size="11" fill="#a9baaf">Whole-file dumps, orientation browsing, &#8220;just in case&#8221;</text>
+  <text x="44" y="222" font-size="11" fill="#a9baaf">context — re-billed as input on every step after.</text>
+  <line x1="390" y1="202" x2="430" y2="202" stroke="#3f8a5c" stroke-width="2" marker-end="url(#fern)"/>
+  <rect x="440" y="170" width="392" height="64" rx="3" fill="#101813" stroke="#35443b"/>
+  <rect x="440" y="170" width="3" height="64" fill="#2F7E52"/>
+  <text x="456" y="190" font-size="12.5" font-weight="600" fill="#eef3ef">The stance + the live monitor</text>
+  <text x="456" y="207" font-size="11" fill="#a9baaf">Acquisitions declared before the first call, each read tied to</text>
+  <text x="456" y="222" font-size="11" fill="#a9baaf">an output; the spawner judges every call as it lands.</text>
+
+  <!-- band 3: tool sprawl -->
+  <rect x="28" y="244" width="356" height="64" rx="3" fill="#12100e" stroke="#5a382e"/>
+  <rect x="28" y="244" width="3" height="64" fill="#b0503b"/>
+  <text x="44" y="264" font-size="12.5" font-weight="600" fill="#cf7e6b">Tool sprawl</text>
+  <text x="44" y="281" font-size="11" fill="#a9baaf">Surfaces reachable &#8220;just in case&#8221; — including the one that</text>
+  <text x="44" y="296" font-size="11" fill="#a9baaf">would let an executor grade its own work.</text>
+  <line x1="390" y1="276" x2="430" y2="276" stroke="#3f8a5c" stroke-width="2" marker-end="url(#fern)"/>
+  <rect x="440" y="244" width="392" height="64" rx="3" fill="#101813" stroke="#35443b"/>
+  <rect x="440" y="244" width="3" height="64" fill="#2F7E52"/>
+  <text x="456" y="264" font-size="12.5" font-weight="600" fill="#eef3ef">Scoped surfaces</text>
+  <text x="456" y="281" font-size="11" fill="#a9baaf">Minimal allowlists; the entire board mechanically denied to</text>
+  <text x="456" y="296" font-size="11" fill="#a9baaf">the executor (<tspan class="mono" font-size="10.5">disallowedTools</tspan>), not merely unlisted.</text>
+
+  <!-- band 4: completion churn -->
+  <rect x="28" y="318" width="356" height="64" rx="3" fill="#12100e" stroke="#5a382e"/>
+  <rect x="28" y="318" width="3" height="64" fill="#b0503b"/>
+  <text x="44" y="338" font-size="12.5" font-weight="600" fill="#cf7e6b">Completion churn</text>
+  <text x="44" y="355" font-size="11" fill="#a9baaf">Self-attested &#8220;done&#8221;, rework surfacing late, retries that</text>
+  <text x="44" y="370" font-size="11" fill="#a9baaf">re-explore instead of repair.</text>
+  <line x1="390" y1="350" x2="430" y2="350" stroke="#3f8a5c" stroke-width="2" marker-end="url(#fern)"/>
+  <rect x="440" y="318" width="392" height="64" rx="3" fill="#101813" stroke="#35443b"/>
+  <rect x="440" y="318" width="3" height="64" fill="#2F7E52"/>
+  <text x="456" y="338" font-size="12.5" font-weight="600" fill="#eef3ef">The judge</text>
+  <text x="456" y="355" font-size="11" fill="#a9baaf">Evidence in, PASS or typed refusal out — FAIL names the</text>
+  <text x="456" y="370" font-size="11" fill="#a9baaf">missing proof, so the retry is surgical, not archaeological.</text>
+
+  <line x1="28" y1="396" x2="832" y2="396" stroke="#1b2620"/>
+  <text x="28" y="412" font-size="10.5" fill="#6d8074">Input tokens dominate the agentic bill — context is re-read at every step. Everything above exists to keep that context lean.</text>
+</svg>

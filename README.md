@@ -4,30 +4,54 @@
 
 <h1 align="center">Kyzo Planner</h1>
 
-<p align="center"><em>A GitHub Projects board your agents can be trusted with: typed tools,<br>a lifecycle gated on git reality, and a judge between the work and the checkbox.</em></p>
+<p align="center"><em>A GitHub Projects board your agents can be trusted with: typed tools, a lifecycle<br>gated on git reality, a judge between the work and the checkbox — and a token meter kept lean by design.</em></p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSL--1.1-2F7E52" alt="License: BSL-1.1"></a>
   <a href="#install"><img src="https://img.shields.io/badge/Claude%20Code-plugin-1E4D33" alt="Claude Code plugin"></a>
   <a href="#a-grammar-not-a-manual"><img src="https://img.shields.io/badge/tools-33%20typed-1E4D33" alt="33 typed tools"></a>
-  <a href="#install"><img src="https://img.shields.io/badge/config-zero%20by%20default-2F7E52" alt="Zero config by default"></a>
+  <a href="#the-token-bill-is-the-product"><img src="https://img.shields.io/badge/tokens-watched%20per%20call-2F7E52" alt="Tokens watched per call"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/config-zero%20by%20default-1E4D33" alt="Zero config by default"></a>
 </p>
 
-Agentic development did not shrink the planning problem; it moved it. Code is cheap now. What
-stayed expensive is what was always expensive, multiplied by autonomy: knowing what to build next,
-in what order, and whether the thing marked done is actually done. An agent's memory is a context
-window — it evaporates when the session ends. If the state of work lives in chat scrollback, every
-session starts with archaeology and ends with drift.
+Agentic development did not shrink the planning problem; it moved it — and attached a meter. An
+autonomous coding task routinely pushes millions of tokens through the API, most of them **input**:
+the same context re-read on every step. Per-seat bills now run to four figures a month, and
+[token costs are being compared to payroll](https://www.cio.com/article/4189149/ai-coding-token-costs-are-on-track-to-rival-human-payroll.html).
+What runs the meter is rarely the hard thinking. It is waste with a recognizable shape: an agent
+re-deriving what was already decided, reading whole files to feel oriented, wandering off the one
+task it was handed, and grading its own work so the rework surfaces late.
 
-Kyzo Planner keeps that state in the one place you and your agents can read without translation: a
-GitHub Projects board. Not a mirror of the plan — **the plan.** You read it as a kanban board with
-roll-up progress bars; your agents operate it as 33 typed MCP tools inside Claude Code. One
-artifact, no sync, nothing to go stale.
+Kyzo Planner is a control plane built to starve that waste. It keeps the state of work in the one
+place you and your agents read without translation — a GitHub Projects board. Not a mirror of the
+plan: **the plan.** You read it as a kanban board with roll-up progress bars; your agents operate
+it as 33 typed MCP tools inside Claude Code, through contracts, gates, and scoped surfaces that
+make the cheap path and the correct path the same path:
 
-A plain board, though, is a wall of drag-and-drop state that any process can scribble on. What
-makes this one safe to hand to an agent is the shape of the surface:
+<p align="center"><img src="docs/assets/glance.svg" width="860" alt="Kyzo Planner at a glance: one board one axis, horizons live on epics, a grammar not a manual, gated against git itself, a checked box is earned, watched at the call."></p>
 
-<p align="center"><img src="docs/assets/glance.svg" width="860" alt="Kyzo Planner at a glance: one board one axis, horizons live on epics, a grammar not a manual, gated against git itself, a checked box is earned."></p>
+## The token bill is the product
+
+Input tokens dominate agentic cost because context is re-consumed at every step — so the way to
+cut the bill is not a cheaper model, it is an executor that never acquires what it doesn't need.
+Every mechanism in this plugin answers to that one P&L. Four drains, four mechanisms:
+
+<p align="center"><img src="docs/assets/economics.svg" width="860" alt="Where agent tokens go: re-derivation starved by the story contract, insurance reads by the stance and live monitor, tool sprawl by scoped surfaces, completion churn by the judge."></p>
+
+## Watched at the call, not the retrospective
+
+The development agent's charter instructs its spawner to tail the live tool-call stream — one
+event per call — and judge each read and edit as it lands. Here is a real session: the
+orchestrator narrating per-call verdicts over a running task agent, catching a self-inflicted
+clobber the moment it happens, auditing the evidence phase in parallel, and spending a handful of
+tokens to do it:
+
+<p align="center"><img src="docs/assets/task_monitor.png" width="900" alt="A live session: the orchestrator monitors the dev agent's tool-call stream event by event, judging each read and edit as it lands while the task executes."></p>
+
+The executor's side of the same bargain is the stance its charter opens with: declare your
+acquisitions before the first tool call, tie each read to the output it feeds, re-check mutable
+state freely, and treat a read that feeds no output as the failure mode. Between the stance below
+and the monitor above, the token budget is managed at the call — never discovered on the invoice.
 
 ## The board is the interface
 
@@ -139,8 +163,9 @@ Executing a story is a pipeline of three agents with deliberately unequal powers
   deleting the files, symbols, and escape routes whose survival would let the next agent wrap or
   route around the design being replaced. It accepts a red tree; a preserved fallback is the
   failure.
-- **`kyzo-planner-development-task`** executes exactly one `T#` task. It holds **no board tools**,
-  it does not re-derive, and when it believes it is done, all it can do is submit a completion form.
+- **`kyzo-planner-development-task`** executes exactly one `T#` task. The entire board surface is
+  **mechanically denied** to it (`disallowedTools`, not a convention), it does not re-derive, and
+  when it believes it is done, all it can do is submit a completion form.
 - **`kyzo-planner-task-completion-judge`** is the sole holder of `check_story_task`. It inspects no
   code and infers nothing missing: it rules on submitted evidence against the story contract,
   actively suspicious, burden of proof on the developer. PASS checks the box; FAIL returns a
