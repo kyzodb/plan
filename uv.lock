@@ -588,8 +588,8 @@ wheels = [
 ]
 
 [[package]]
-name = "kyzo-planner-mcp"
-version = "0.1.3"
+name = "kyzo-plan-mcp"
+version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },

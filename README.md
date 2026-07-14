@@ -2,7 +2,7 @@
   <img src="docs/assets/logo_k.png" width="160" alt="Kyzo logo">
 </p>
 
-<h1 align="center">Kyzo Planner</h1>
+<h1 align="center">Kyzo Plan</h1>
 
 <p align="center"><em>A GitHub Projects board your agents can be trusted with: typed tools, a lifecycle<br>gated on git reality, a judge between the work and the checkbox — and a token meter kept lean by design.</em></p>
 
@@ -22,13 +22,13 @@ What runs the meter is rarely the hard thinking. It is waste with a recognizable
 re-deriving what was already decided, reading whole files to feel oriented, wandering off the one
 task it was handed, and grading its own work so the rework surfaces late.
 
-Kyzo Planner is a control plane built to starve that waste. It keeps the state of work in the one
+Kyzo Plan is a control plane built to starve that waste. It keeps the state of work in the one
 place you and your agents read without translation — a GitHub Projects board. Not a mirror of the
 plan: **the plan.** You read it as a kanban board with roll-up progress bars; your agents operate
 it as 33 typed MCP tools inside Claude Code, through contracts, gates, and scoped surfaces that
 make the cheap path and the correct path the same path:
 
-<p align="center"><img src="docs/assets/glance.svg" width="860" alt="Kyzo Planner at a glance: one board one axis, horizons live on epics, a grammar not a manual, gated against git itself, a checked box is earned, watched at the call."></p>
+<p align="center"><img src="docs/assets/glance.svg" width="860" alt="Kyzo Plan at a glance: one board one axis, horizons live on epics, a grammar not a manual, gated against git itself, a checked box is earned, watched at the call."></p>
 
 ## The token bill is the product
 
@@ -98,7 +98,7 @@ tells you its powers before you call it:
 <p align="center"><img src="docs/assets/grammar.svg" width="860" alt="The name grammar: read_* is pure, start_* and finish_* are gated, move_to_* is free, authoring verbs write content, delete_issues is operator-only."></p>
 
 Each tool's description is its documentation, so an agent doesn't study a reference — it reads the
-schema it was about to call anyway. The `kyzo-planner-manage-board` skill carries the little that
+schema it was about to call anyway. The `kyzo-plan-manage-board` skill carries the little that
 lives *between* the tools: orient with `read_board_status` before acting, never work around a
 refusal, never touch the board through raw `gh`.
 
@@ -148,7 +148,7 @@ it is an execution contract, written once, upstream, by whoever is thinking:
 - **Definition of Done** — including the one item that names the exact verification gate command.
   If you cannot name how done is checked, the story is not sharp enough to execute.
 
-The `kyzo-planner-write-story` and `kyzo-planner-write-epic` skills hold the full contracts,
+The `kyzo-plan-write-story` and `kyzo-plan-write-epic` skills hold the full contracts,
 down to a banned lexicon: mood verbs (*improve, polish, clean up*) cannot appear in tasks, and
 escape hatches (*for now, fall back, phase 2*) can appear only inside the Condemned block — naming
 the thing being killed.
@@ -159,14 +159,14 @@ Executing a story is a pipeline of three agents with deliberately unequal powers
 
 <p align="center"><img src="docs/assets/pipeline.svg" width="860" alt="The execution pipeline: story contract, demolition agent, development-task agent, completion judge. Only the judge holds check_story_task; PASS checks the box, FAIL returns a refusal."></p>
 
-- **`kyzo-planner-demolition`** reads the Condemned block and clears the old surface first —
+- **`kyzo-plan-demolition`** reads the Condemned block and clears the old surface first —
   deleting the files, symbols, and escape routes whose survival would let the next agent wrap or
   route around the design being replaced. It accepts a red tree; a preserved fallback is the
   failure.
-- **`kyzo-planner-development-task`** executes exactly one `T#` task. The entire board surface is
+- **`kyzo-plan-development-task`** executes exactly one `T#` task. The entire board surface is
   **mechanically denied** to it (`disallowedTools`, not a convention), it does not re-derive, and
   when it believes it is done, all it can do is submit a completion form.
-- **`kyzo-planner-task-completion-judge`** is the sole holder of `check_story_task`. It inspects no
+- **`kyzo-plan-task-completion-judge`** is the sole holder of `check_story_task`. It inspects no
   code and infers nothing missing: it rules on submitted evidence against the story contract,
   actively suspicious, burden of proof on the developer. PASS checks the box; FAIL returns a
   refusal naming the missing evidence.
@@ -182,8 +182,8 @@ GitHub org, Python 3.12+.
 In Claude Code, from a clone (or the repo URL once hosted):
 
 ```
-/plugin marketplace add /path/to/planner
-/plugin install kyzo-planner@kyzo
+/plugin marketplace add /path/to/plan
+/plugin install kyzo-plan@kyzo
 ```
 
 Zero config in the common case: the board defaults to the checkout — owner and repo from the
@@ -191,12 +191,12 @@ Zero config in the common case: the board defaults to the checkout — owner and
 provisions a new board carrying this schema (columns, labels, and descriptions) if you're starting
 from nothing.
 
-To target a different board, set the overrides on enable (`/plugin configure kyzo-planner@kyzo`) or
+To target a different board, set the overrides on enable (`/plugin configure kyzo-plan@kyzo`) or
 at install time:
 
 ```
-claude plugin marketplace add /path/to/planner
-claude plugin install kyzo-planner@kyzo \
+claude plugin marketplace add /path/to/plan
+claude plugin install kyzo-plan@kyzo \
   --config board_owner=OWNER --config board_repo=REPO --config board_project=N
 ```
 
@@ -204,12 +204,12 @@ When neither config nor a derivable default exists (no origin remote, zero or se
 projects), the server refuses to start and names exactly what to set — the same typed-refusal
 manner as everything else here.
 
-Uninstall with `/plugin uninstall kyzo-planner@kyzo`. Board state lives entirely on GitHub;
+Uninstall with `/plugin uninstall kyzo-plan@kyzo`. Board state lives entirely on GitHub;
 uninstalling leaves nothing behind.
 
 ## From the KyzoDB workshop
 
-Kyzo Planner is the system [KyzoDB](https://github.com/kyzodb/kyzo) is built with — the screenshots
+Kyzo Plan is the system [KyzoDB](https://github.com/kyzodb/kyzo) is built with — the screenshots
 above are its live board, and the taste for typed refusals and gated mutations is the same taste
 that put seven numbered laws at the front door of that engine. This plugin does not use or require
 KyzoDB — yet — and needs nothing but `gh` and `uv`. We are sharing it because the work substrate

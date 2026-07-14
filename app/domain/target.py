@@ -1,5 +1,5 @@
 """Resolution of the default board, on first need — never at import, so the server always
-boots and `create_board` stays reachable on a repo that has no board yet: whatever `PLANNER_BOARD_*` left unset derives from the
+boots and `create_board` stays reachable on a repo that has no board yet: whatever `PLAN_BOARD_*` left unset derives from the
 checkout itself — owner and repo off `origin`, the project number off the repo's sole open linked
 project. Selection only, never mutation: this file reads git and GitHub to *name* a target; every
 write against that target is still schema-gated by the board recognizers, so a derived default
@@ -10,7 +10,7 @@ from typing import Self
 from pydantic import BaseModel, ConfigDict
 
 from app.domain import git
-from app.domain.config import BoardTarget, PlannerSettings, ProjectNumber, RepoName, RepoOwner
+from app.domain.config import BoardTarget, PlanSettings, ProjectNumber, RepoName, RepoOwner
 from app.domain.gh import graphql
 from app.domain.type import ProjectTitle
 
@@ -44,13 +44,13 @@ def _sole_open_project(owner: RepoOwner, repo: RepoName) -> ProjectNumber:
     if len(open_projects) != 1:
         listed = ", ".join(f"#{p.number.root} {p.title.root}" for p in open_projects) or "none"
         raise RuntimeError(
-            f"planner: {owner.root}/{repo.root} has {len(open_projects)} open linked projects "
-            f"({listed}) — set PLANNER_BOARD_PROJECT to choose the board"
+            f"plan: {owner.root}/{repo.root} has {len(open_projects)} open linked projects "
+            f"({listed}) — set PLAN_BOARD_PROJECT to choose the board"
         )
     return open_projects[0].number
 
 
-def configured_target(settings: PlannerSettings) -> BoardTarget:
+def configured_target(settings: PlanSettings) -> BoardTarget:
     """The board the server acts on by default: each configured value taken as given, each unset
     one derived from the checkout. Fully-configured settings resolve with no git or network read."""
     owner, repo = settings.board_owner, settings.board_repo

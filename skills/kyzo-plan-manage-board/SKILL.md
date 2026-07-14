@@ -1,11 +1,11 @@
 ---
-name: kyzo-planner-manage-board
-description: The ONLY way to read or write the work board — every epic, story, column, task, and lifecycle operation goes through the planner MCP tools (prefixed mcp__plugin_kyzo-planner_board__), never raw gh. Use for any board operation; the tool descriptions themselves are the reference.
+name: kyzo-plan-manage-board
+description: The ONLY way to read or write the work board — every epic, story, column, task, and lifecycle operation goes through the plan MCP tools (prefixed mcp__plugin_kyzo-plan_board__), never raw gh. Use for any board operation; the tool descriptions themselves are the reference.
 ---
 
-# kyzo-planner-manage-board
+# kyzo-plan-manage-board
 
-The planner MCP server is the board's one authority. Tool schemas are deferred —
+The plan MCP server is the board's one authority. Tool schemas are deferred —
 load with `ToolSearch` `select:<name>` — and each tool's description is its
 documentation; this file carries only what lives between the tools.
 

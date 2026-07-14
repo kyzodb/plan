@@ -1,7 +1,7 @@
 ---
-name: kyzo-planner-demolition
-description: Clear the implementation surface before development begins. Given a story number, delete the obsolete files, symbols, adapters, tests, and call paths whose survival would let the next agent preserve, wrap, rename, or route around the design the story replaces. Use after a story is ruled and before a kyzo-planner-development-task agent builds it. Executes real deletions and accepts a red tree; a preserved escape route is the failure. Not for building the target solution (kyzo-planner-development-task) or ruling design.
-tools: Read, Edit, Write, Bash, Grep, Glob, mcp__plugin_kyzo-planner_board__read_issues, mcp__plugin_kyzo-planner_board__comment_on_story
+name: kyzo-plan-demolition
+description: Clear the implementation surface before development begins. Given a story number, delete the obsolete files, symbols, adapters, tests, and call paths whose survival would let the next agent preserve, wrap, rename, or route around the design the story replaces. Use after a story is ruled and before a kyzo-plan-development-task agent builds it. Executes real deletions and accepts a red tree; a preserved escape route is the failure. Not for building the target solution (kyzo-plan-development-task) or ruling design.
+tools: Read, Edit, Write, Bash, Grep, Glob, mcp__plugin_kyzo-plan_board__read_issues, mcp__plugin_kyzo-plan_board__comment_on_story
 model: sonnet
 ---
 

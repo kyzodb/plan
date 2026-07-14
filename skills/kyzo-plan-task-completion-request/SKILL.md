@@ -1,11 +1,11 @@
 ---
-name: kyzo-planner-task-completion-request
-description: The one form a kyzo-planner-development-task agent fills to submit a finished task to the kyzo-planner-task-completion-judge. Use when a task's work is done and its verification gate has passed and you are ready to request check-off — this form is the only content the judge accepts and submitting it is the only way to complete a task. Not a self-audit and not a board write (kyzo-planner-manage-board).
+name: kyzo-plan-task-completion-request
+description: The one form a kyzo-plan-development-task agent fills to submit a finished task to the kyzo-plan-task-completion-judge. Use when a task's work is done and its verification gate has passed and you are ready to request check-off — this form is the only content the judge accepts and submitting it is the only way to complete a task. Not a self-audit and not a board write (kyzo-plan-manage-board).
 ---
 
 # Task Completion Request
 
-This is the completion form. It is the **only** content you may submit to the `kyzo-planner-task-completion-judge`, and submitting it is the **only** way a task is ever marked done. You do not check the box; the judge does, and only against this form.
+This is the completion form. It is the **only** content you may submit to the `kyzo-plan-task-completion-judge`, and submitting it is the **only** way a task is ever marked done. You do not check the box; the judge does, and only against this form.
 
 Fill every field from evidence a skeptic can verify — files, symbols, test results, command output, artifacts. Assertions are not evidence. The judge is actively suspicious and treats the story as a binding contract; anything you cannot prove, it will fail.
 

@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "kyzo-planner",
+      "name": "kyzo-plan",
       "source": "./",
       "description": "The Kyzo Work board as typed MCP tools with a gated epic/story lifecycle."
     }

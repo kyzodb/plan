@@ -1,5 +1,5 @@
 ---
-name: kyzo-planner-write-epic
+name: kyzo-plan-write-epic
 description: create, review, or revise work-board epics. use when naming epic groups, writing epic outcome descriptions, or checking whether grouped stories share a real engineering/value transition. enforce epic language that describes the state of value change created by the story group instead of release theater, phase names, slogans, or generic completion language.
 ---
 
@@ -26,7 +26,7 @@ The epic carries **no execution detail** — no file paths, no fixes, no
 verification commands, no tasks. Those live in the stories, because the story is
 what an agent executes and the epic is not. Precision has one home per altitude:
 grouping and order here, references and verification gates in the stories (see
-`kyzo-planner-write-story` → "Executable without re-derivation").
+`kyzo-plan-write-story` → "Executable without re-derivation").
 
 ## Epic Schema
 
@@ -62,7 +62,7 @@ from it, never hand-maintained as a second source of truth.
   `Performance`, `Security`, or `Demo`, matching the dominant character of its
   stories — as the GitHub label itself, never restated in the body.
 - **The epic is the one carrier of horizon, and it carries it as column
-  position** (`Now` / `Next` / `Later`, moved via the kyzo-planner-manage-board
+  position** (`Now` / `Next` / `Later`, moved via the kyzo-plan-manage-board
   tools) — never as a milestone or a body field. Milestones do not exist on this
   board. Its stories read their horizon through the parent relation and never
   carry their own.

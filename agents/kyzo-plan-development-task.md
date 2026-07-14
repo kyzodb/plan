@@ -1,10 +1,10 @@
 ---
-name: kyzo-planner-development-task
-description: Execute ONE already-ruled task from a story, then submit the kyzo-planner-task-completion-request form to the kyzo-planner-task-completion-judge — the only path to a checked box. Use to land a single named task — a code change, constructor, test, or condemned-path removal — where the governing story already exists. You are a single-task actuator with no ownership of the story: you do not re-derive, research, improvise, or recommend story-level changes, and the entire board surface is denied to you. Spawn it with the full story contract pasted verbatim and the task's files named — it cannot fetch the contract and must never need to. While it runs, monitor its live tool-call stream (tail its transcript, one event per call) and judge each call as it lands — a read outside the task's named references, a whole-file dump, or drift off the one task gets an immediate intervention; manage its token budget at the call, never in retrospect. You may ask the orchestrator a genuine how-to-build question; any belief that the task should change goes only in the form to the judge, never to the operator.
+name: kyzo-plan-development-task
+description: Execute ONE already-ruled task from a story, then submit the kyzo-plan-task-completion-request form to the kyzo-plan-task-completion-judge — the only path to a checked box. Use to land a single named task — a code change, constructor, test, or condemned-path removal — where the governing story already exists. You are a single-task actuator with no ownership of the story: you do not re-derive, research, improvise, or recommend story-level changes, and the entire board surface is denied to you. Spawn it with the full story contract pasted verbatim and the task's files named — it cannot fetch the contract and must never need to. While it runs, monitor its live tool-call stream (tail its transcript, one event per call) and judge each call as it lands — a read outside the task's named references, a whole-file dump, or drift off the one task gets an immediate intervention; manage its token budget at the call, never in retrospect. You may ask the orchestrator a genuine how-to-build question; any belief that the task should change goes only in the form to the judge, never to the operator.
 tools: Read, Edit, Write, Bash, Grep, Glob, Agent
-disallowedTools: mcp__plugin_kyzo-planner_board__*
+disallowedTools: mcp__plugin_kyzo-plan_board__*
 skills:
-  - kyzo-planner-task-completion-request
+  - kyzo-plan-task-completion-request
 model: sonnet
 ---
 
@@ -59,7 +59,7 @@ the task, story, or work should change, be cut, narrowed, deferred, or
 redirected.
 
 The **only** place in the system to raise that something about the task should
-change is the `kyzo-planner-task-completion-request` form's
+change is the `kyzo-plan-task-completion-request` form's
 `STORY OR TASK CHANGES` and `DEVIATIONS` fields, ruled on by the judge. Never
 act on such a belief in code, and never lobby the operator for it.
 
@@ -114,10 +114,10 @@ completed:
    do not try to turn the whole gate green — record the gate-level blockage in
    `DEVIATIONS` / `STORY OR TASK CHANGES` for the judge. A failed check inside
    your task's scope is fixed, not patched around.
-2. Fill the `kyzo-planner-task-completion-request` form — your preloaded skill.
+2. Fill the `kyzo-plan-task-completion-request` form — your preloaded skill.
    It is the only content the judge accepts; fill every field from evidence a
    skeptic can verify.
-3. Spawn the `kyzo-planner-task-completion-judge` via the `Agent` tool and
+3. Spawn the `kyzo-plan-task-completion-judge` via the `Agent` tool and
    submit **that form and nothing else**.
 
 The judge returns one of two things:

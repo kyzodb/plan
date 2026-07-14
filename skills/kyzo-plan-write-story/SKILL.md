@@ -1,5 +1,5 @@
 ---
-name: kyzo-planner-write-story
+name: kyzo-plan-write-story
 description: create, review, or revise work-board stories using the story contract. use when writing story names, descriptions, source citations, condemned blocks, ceiling checks, engineering choices, tasks, and definitions of done. enforce explicit engineering commitments at the cited sources' full height instead of vague cleanup, fake certainty, deferred architecture, or low-ceiling work that merely passes.
 ---
 
@@ -49,7 +49,7 @@ Three properties enforce this:
 - **Horizon lives in exactly one place: the parent epic's column** (`Now` /
   `Next` / `Later`). A story never carries its own horizon — no milestone, no
   body field, no label. Milestones do not exist on this board.
-- All board writes go through the kyzo-planner-manage-board MCP tools, never raw `gh`.
+- All board writes go through the kyzo-plan-manage-board MCP tools, never raw `gh`.
 
 ## Story Schema
 
@@ -128,7 +128,7 @@ so that <state of value change>.
 
 `T#` identifiers are append-only: assigned once, never renumbered when a task is
 inserted or removed; a new task takes the next unused integer. They are the
-handle the kyzo-planner-task-completion-judge checks off, so every task line carries one.
+handle the kyzo-plan-task-completion-judge checks off, so every task line carries one.
 
 ## Rendering
 
@@ -153,11 +153,11 @@ context. Shape it for the scanning eye:
 
 Write each field for its consumer:
 
-- **kyzo-planner-demolition** acts on the **Condemned** block: name the concrete
+- **kyzo-plan-demolition** acts on the **Condemned** block: name the concrete
   files, symbols, adapters, tests, and call paths to remove. A vague block
   leaves nothing that can be safely deleted.
-- **kyzo-planner-development-task** executes one `T#` task at a time.
-- **kyzo-planner-task-completion-judge** checks a box only against the
+- **kyzo-plan-development-task** executes one `T#` task at a time.
+- **kyzo-plan-task-completion-judge** checks a box only against the
   **Definition of Done** item that names the exact verification-gate command.
 
 ## Field Rules

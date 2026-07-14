@@ -232,13 +232,13 @@ def _status_options_mutation() -> str:
 
 @mcp.tool(
     name="create_board",
-    description="Provision a new board carrying the planner schema — the same one table the "
+    description="Provision a new board carrying the plan schema — the same one table the "
     "readers and gates enforce, so the constructor and recognizers cannot drift: the seven Status "
     "columns in order (Backlog, Now, In Progress, Blocked, Next, Later, Done) with their colors "
     "and descriptions, the five classification labels plus focus in the target repo (created only "
     "where missing — an existing label is never altered), and the project linked to the repo. "
     "Creates a brand-new GitHub project every call and verifies the result with the same schema "
-    "read every other tool trusts. Returns the PLANNER_BOARD_* triple to configure.",
+    "read every other tool trusts. Returns the PLAN_BOARD_* triple to configure.",
 )
 def create_board(title: BoardTitle, owner: RepoOwner, repo: RepoName) -> str:
     ids = graphql(_OWNER_REPO_QUERY, owner=owner.root, name=repo.root)
@@ -264,7 +264,7 @@ def create_board(title: BoardTitle, owner: RepoOwner, repo: RepoName) -> str:
     _status_field(target)  # verify with the recognizer every other tool trusts
     return (
         f"create_board: {owner.root}/{repo.root} project {number.root} ready — configure "
-        f"PLANNER_BOARD_OWNER={owner.root} PLANNER_BOARD_REPO={repo.root} PLANNER_BOARD_PROJECT={number.root}"
+        f"PLAN_BOARD_OWNER={owner.root} PLAN_BOARD_REPO={repo.root} PLAN_BOARD_PROJECT={number.root}"
     )
 
 
@@ -660,7 +660,7 @@ def _story_complete(record: IssueRecord) -> bool:
 def _story_start_tag(number: IssueNumber) -> str:
     """The one place the story-start anchor tag name is formed, so its creation and its read cannot
     drift apart."""
-    return f"planner/story-start/{number.root}"
+    return f"plan/story-start/{number.root}"
 
 
 _EPIC_BRANCH_QUERY = (

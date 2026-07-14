@@ -1,5 +1,5 @@
 """The one place `git` the subprocess is spawned, against the repo the board's branches live in
-(`SETTINGS.repo`, the configured `PLANNER_REPO`). Branch identities cross this boundary as
+(`SETTINGS.repo`, the configured `PLAN_REPO`). Branch identities cross this boundary as
 `BranchRef`; only the private `_git` layer and the rev-level helpers (tags, commit ranges) speak raw
 strings, because a tag or a commit-range endpoint is an arbitrary git rev, not a branch. The readers
 never mutate the tree; the two writers — the story-start anchor tag and the compensation branch
@@ -154,14 +154,14 @@ def origin_identity() -> RepoIdentity:
     result = _git("remote", "get-url", "origin")
     if result.returncode != 0:
         raise RuntimeError(
-            f"planner: no board configured and no `origin` remote in {REPO} to derive one from — "
-            "set PLANNER_BOARD_OWNER/PLANNER_BOARD_REPO or add the remote"
+            f"plan: no board configured and no `origin` remote in {REPO} to derive one from — "
+            "set PLAN_BOARD_OWNER/PLAN_BOARD_REPO or add the remote"
         )
     url = result.stdout.strip()
     match = _ORIGIN_URL.search(url)
     if match is None:
         raise RuntimeError(
-            f"planner: `origin` ({url}) is not a GitHub remote this program can read an "
-            "owner/repo from — set PLANNER_BOARD_OWNER/PLANNER_BOARD_REPO"
+            f"plan: `origin` ({url}) is not a GitHub remote this program can read an "
+            "owner/repo from — set PLAN_BOARD_OWNER/PLAN_BOARD_REPO"
         )
     return RepoIdentity(owner=RepoOwner(match["owner"]), name=RepoName(match["name"]))

@@ -1,4 +1,4 @@
-"""The program's one environment read (prefix `PLANNER_`), proven once at mount into typed
+"""The program's one environment read (prefix `PLAN_`), proven once at mount into typed
 values, plus the board-identity vocabulary those values are made of. Resolution of the *default*
 board — deriving whatever the environment leaves unset from the checkout itself — is
 `app.domain.target`'s job; this file only proves what was actually given. Identity is `gh`'s
@@ -46,14 +46,14 @@ class BoardTarget(BaseModel):
     project: ProjectNumber
 
 
-class PlannerSettings(BaseSettings):
+class PlanSettings(BaseSettings):
     """The one structure that reads the environment. Every board field is an override: `None`
     means "derive from the checkout" and is resolved by `app.domain.target` at mount. An empty
     env value counts as unset — a plugin host substituting an unfilled option passes empty, and
     empty is not a name."""
 
     model_config = SettingsConfigDict(
-        frozen=True, extra="forbid", env_prefix="PLANNER_", env_ignore_empty=True
+        frozen=True, extra="forbid", env_prefix="PLAN_", env_ignore_empty=True
     )
     board_owner: RepoOwner | None = None
     board_repo: RepoName | None = None
@@ -61,4 +61,4 @@ class PlannerSettings(BaseSettings):
     repo: RepoRoot = Field(default_factory=lambda: RepoRoot(os.getcwd()))
 
 
-SETTINGS = PlannerSettings()  # pyright: ignore[reportCallIssue]  — fields fill from the environment
+SETTINGS = PlanSettings()  # pyright: ignore[reportCallIssue]  — fields fill from the environment
