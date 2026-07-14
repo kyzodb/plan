@@ -4,7 +4,7 @@ Parameters
 
 Licensor:             Kyzo
 Licensed Work:        The `mcp/` directory — the KyzoDB MCP server (the KyzoDB
-                      Work board tools) and the kyzo-planner code lens.
+                      Work board tools) and the kyzo-plan code lens.
                       The Licensed Work is © 2026 Kyzo.
 Additional Use Grant: You may use, copy, modify, and create derivative works of
                       the Licensed Work for any non-production purpose,
@@ -14,7 +14,7 @@ Additional Use Grant: You may use, copy, modify, and create derivative works of
                       including (a) offering the Licensed Work or any modified
                       version to third parties as a hosted, managed, or
                       software-as-a-service offering (for example, hosting a
-                      version of kyzo-planner as a service), or (b) distributing or
+                      version of kyzo-plan as a service), or (b) distributing or
                       embedding the Licensed Work as, or as part of, a commercial
                       product or service made available for a fee — requires a
                       separate commercial license from the Licensor.
