@@ -94,8 +94,9 @@ def _observed_label(names: list[dict[str, str]]) -> IssueLabel | None:
     """The one classification label a card carries, if any of its labels is one of the five. Real
     board data includes cards predating that discipline, so absence is a real, not-exceptional case."""
     for entry in names:
-        if entry["name"] in set(LabelName):
-            return IssueLabel(LabelName(entry["name"]))
+        member = LabelName.observed(entry["name"])
+        if member is not None:
+            return IssueLabel(member)
     return None
 
 
@@ -241,16 +242,19 @@ class BoardSurvey(RootModel[tuple[BoardEntry, ...]], frozen=True):
             if content is None or item.get("status") != target_status:
                 continue
             item_labels = item.get("labels", [])
-            has_focus = "focus" in item_labels
+            has_focus = any(str(n).casefold() == "focus" for n in item_labels)
             if focus_only and not has_focus:
                 continue
-            item_label = next((n for n in item_labels if n in set(LabelName)), None)
-            if label is not None and (item_label is None or LabelName(item_label) is not label.root):
+            member = next(
+                (m for n in item_labels if (m := LabelName.observed(str(n))) is not None),
+                None,
+            )
+            if label is not None and (member is None or member is not label.root):
                 continue
             entries.append(BoardEntry(
                 number=IssueNumber(content["number"]),
                 title=IssueTitle(content["title"]),
-                label=IssueLabel(LabelName(item_label)) if item_label is not None else None,
+                label=IssueLabel(member) if member is not None else None,
                 focus=has_focus,
             ))
         return cls(tuple(entries))

@@ -257,9 +257,9 @@ def create_board(title: BoardTitle, owner: RepoOwner, repo: RepoName) -> str:
         raise RuntimeError("new project has no 'Status' single-select field — GitHub's default schema changed")
     graphql(_status_options_mutation(), f=field["id"])
     graphql(_LINK_REPO, p=project_id, r=ids["repository"]["id"])
-    existing = {entry["name"] for entry in json.loads(run("label", "list", "--repo", f"{owner.root}/{repo.root}", "--json", "name"))}
+    existing = {entry["name"].casefold() for entry in json.loads(run("label", "list", "--repo", f"{owner.root}/{repo.root}", "--json", "name"))}
     for spec in BOARD_LABELS:
-        if str(spec.name.root) not in existing:
+        if str(spec.name.root).casefold() not in existing:
             run(
                 "label", "create", str(spec.name.root), "--repo", f"{owner.root}/{repo.root}",
                 "--color", spec.color.root, "--description", spec.description.root,
@@ -1265,12 +1265,15 @@ def read_board_status(target: BoardTarget | None = None) -> str:
         if content.get("number") is None or axis is None:
             continue
         item_labels = item.get("labels", [])
-        item_label = next((n for n in item_labels if n in set(LabelName)), None)
+        member = next(
+            (m for n in item_labels if (m := LabelName.observed(str(n))) is not None),
+            None,
+        )
         entries.setdefault(axis, []).append(BoardEntry(
             number=IssueNumber(content["number"]),
             title=IssueTitle(content["title"]),
-            label=IssueLabel(LabelName(item_label)) if item_label is not None else None,
-            focus="focus" in item_labels,
+            label=IssueLabel(member) if member is not None else None,
+            focus=any(str(n).casefold() == "focus" for n in item_labels),
         ))
     active = [e.number for axis in (ColumnAxis.IN_PROGRESS, ColumnAxis.BLOCKED) for e in entries.get(axis, [])]
     records = {r.number.root: r for r in IssueRecord.fetch_many(tuple(active), target)} if active else {}

@@ -3,7 +3,7 @@ its own `Field`, never on a bare primitive. Each enum here is exactly the value-
 never used as a field's type directly."""
 
 import re
-from typing import Literal
+from typing import Literal, Self
 from datetime import datetime
 from enum import StrEnum
 
@@ -27,6 +27,19 @@ class LabelName(StrEnum):
     PERFORMANCE = "Performance"
     SECURITY = "Security"
     DEMO = "Demo"
+
+    @classmethod
+    def observed(cls, name: str) -> Self | None:
+        """Lift a GitHub label name into the closed five, case-insensitively.
+
+        GitHub's default chip is often `bug`; this board's vocabulary is `Bug`. Exact
+        string match would treat them as different and leave the card unlabeled.
+        """
+        fold = name.casefold()
+        for member in cls:
+            if member.value.casefold() == fold:
+                return member
+        return None
 
 
 class IssueLabel(RootModel[LabelName], frozen=True):
