@@ -7,12 +7,12 @@
 <p align="center"><em>A GitHub Projects board your agents can be trusted with — typed tools,<br>a lifecycle gated on git, a judge before every checkbox, and a token meter kept lean by design.</em></p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSL--1.1-2F7E52" alt="License: BSL-1.1"></a>
-  <a href="#install"><img src="https://img.shields.io/badge/Claude%20Code-plugin-1E4D33" alt="Claude Code plugin"></a>
-  <a href="#install"><img src="https://img.shields.io/badge/Cursor-plugin-1E4D33" alt="Cursor plugin"></a>
-  <a href="#a-grammar-not-a-manual"><img src="https://img.shields.io/badge/MCP-35%20typed%20tools-1E4D33" alt="MCP: 35 typed tools"></a>
-  <a href="#install"><img src="https://img.shields.io/badge/python-3.12%2B-2F7E52" alt="Python 3.12+"></a>
-  <a href="#where-the-tokens-go"><img src="https://img.shields.io/badge/tokens-watched%20per%20call-2F7E52" alt="Tokens watched per call"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSL--1.1-6d8074" alt="License: BSL-1.1"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Claude%20Code-plugin-c15f3c" alt="Claude Code plugin"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Cursor-plugin-7fa6bf" alt="Cursor plugin"></a>
+  <a href="#a-grammar-not-a-manual"><img src="https://img.shields.io/badge/MCP-35%20typed%20tools-2F7E52" alt="MCP: 35 typed tools"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/python-3.12%2B-4B8BBE" alt="Python 3.12+"></a>
+  <a href="#where-the-tokens-go"><img src="https://img.shields.io/badge/tokens-watched%20per%20call-b0503b" alt="Tokens watched per call"></a>
   <a href="#install"><img src="https://img.shields.io/badge/config-zero%20by%20default-1E4D33" alt="Zero config by default"></a>
 </p>
 
