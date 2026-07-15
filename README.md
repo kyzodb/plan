@@ -4,7 +4,7 @@
 
 <h1 align="center">Kyzo Plan</h1>
 
-<p align="center"><em>A GitHub Projects board your agents can be trusted with — typed tools,<br>a lifecycle gated on git, a judge before every checkbox, and a token meter kept lean by design.</em></p>
+<p align="center"><em>You decide what's worth building and write it once — agents execute against that<br>judgment, gated on git, with a judge before every checkbox and a token meter kept lean by design.</em></p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSL--1.1-6d8074" alt="License: BSL-1.1"></a>
@@ -16,10 +16,11 @@
   <a href="#install"><img src="https://img.shields.io/badge/config-zero%20by%20default-1E4D33" alt="Zero config by default"></a>
 </p>
 
-Kyzo Plan is a control plane for agentic development. The plan lives on a stock
-GitHub Projects board — what you see is what your agents operate. They get
-**35 typed MCP tools**, contracts that starve re-derivation, and a pipeline where
-a checkbox is a fact, not a self-attestation.
+Kyzo Plan is a control plane for people who still own the product judgment — and for
+agents that must not re-derive it. Intent is written once, upstream, as an execution
+contract. The board is shared state, not a handoff chain. **35 typed MCP tools**
+operate it; git and a completion judge keep motion honest. A checkbox is a fact,
+not a self-attestation.
 
 <p align="center"><img src="docs/assets/story_cycle.svg" width="860" alt="One story, start to Done: start_story gates on git, demolition deletes the condemned surface, each development task runs under a path-allowlist monitor, and only the judge — after verify_task_completion — flips a task box."></p>
 
@@ -53,24 +54,23 @@ install from this repository today.
 Uninstall with `/plugin uninstall kyzo-plan@kyzo`. Board state lives on GitHub;
 uninstalling leaves nothing behind.
 
-## The board is the interface
+## One ledger — no translation layer
 
-A real one — the live board [KyzoDB](https://github.com/kyzodb/kyzo) is built on:
+What you see is what agents operate. Stock GitHub Projects; one screen is the
+working truth — not a status chain between roles:
 
 <p align="center"><img src="docs/assets/board_full.png" width="900" alt="The KyzoDB Work board: Backlog, Now, In Progress, Blocked, Next, Later, and Done; epics show roll-up progress bars."></p>
 
 Epics carry roll-up progress (`1 / 3 — 33%`). Classification is the GitHub label.
 One card in In Progress answers what is being built right now. Filter `Backlog`
-and `Done` away and the working truth fits one screen:
+and `Done` away:
 
 <p align="center"><img src="docs/assets/board_condensed.png" width="900" alt="The same board filtered with -status:Done,Backlog."></p>
-
-Nothing custom. Stock GitHub Projects — driven through a surface that keeps it true.
 
 ## Where the tokens go
 
 Agentic cost is mostly **input**: context re-read on every step. Five drains, five
-mechanisms:
+mechanisms — thinking stays upstream; agents don't burn the meter rediscovering it:
 
 <p align="center"><img src="docs/assets/economics.svg" width="860" alt="Where agent tokens go: five drains starved by the story contract, path allowlist and live monitor, demolition first, scoped surfaces, and the judge."></p>
 
@@ -90,27 +90,29 @@ through raw `gh`.
 
 <p align="center"><img src="docs/assets/gates.svg" width="860" alt="start_epic refuses when main is behind origin; start_story refuses out-of-order stories — every refusal names one fact and mutates nothing."></p>
 
-**Branch-per-epic, one story at a time.** `start_epic` demands a clean, up-to-date
-`main` and an unused branch. `start_story` demands `HEAD` on that branch, stories
-in sub-issue order, and prior work physically present on the branch. `finish_epic`
-refuses until every box is checked and the branch has no commit missing from
-`main` — it verifies the merge; it never performs it.
+**Branch-per-epic, one story at a time.** The board cannot outrun the repository.
+`start_epic` demands a clean, up-to-date `main` and an unused branch. `start_story`
+demands `HEAD` on that branch, stories in sub-issue order, and prior work
+physically present. `finish_epic` refuses until every box is checked and the
+branch has no commit missing from `main` — it verifies the merge; it never
+performs it.
 
-## Stories agents can execute
+## Judgment in, once
 
-Stories are execution contracts, not tickets. Skills
-`kyzo-plan-write-story` and `kyzo-plan-write-epic` hold the full shapes. The
-executor-facing spine:
+The hard work is still yours: what this serves, what dies, what was chosen, and
+how done is proven. Skills `kyzo-plan-write-story` and `kyzo-plan-write-epic`
+hold the shapes. You commit:
 
-- **Sources / Condemned / Ceiling / Engineering Choice** — what this serves, what
-  dies, what was chosen and why.
-- **Context** — exact references; open sub-decisions marked `[OPEN]`.
+- **Sources / Condemned / Ceiling / Engineering Choice** — the product call,
+  crystallized so an agent cannot reopen it as exploration.
+- **Context** — exact references; only genuine unknowns marked `[OPEN]`.
 - **Tasks** — append-only `T#` clauses, each with **`Allowlist:`** paths and a
-  **`Seal:`** verification command (board state the judge meters against git).
-- **Definition of Done** — including the sole seal command as a checked item.
+  **`Seal:`** command — board state the judge meters against git.
+- **Definition of Done** — including that seal as a checked item.
 
 Banned lexicon (*improve, polish, for now…*) stays out of tasks — or lives only
-inside Condemned, naming what is being killed.
+inside Condemned, naming what is being killed. Agents execute the contract; they
+do not re-author the judgment.
 
 ## Watched at the call
 
