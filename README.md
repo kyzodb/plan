@@ -9,6 +9,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSL--1.1-2F7E52" alt="License: BSL-1.1"></a>
   <a href="#install"><img src="https://img.shields.io/badge/Claude%20Code-plugin-1E4D33" alt="Claude Code plugin"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Cursor-plugin-1E4D33" alt="Cursor plugin"></a>
   <a href="#a-grammar-not-a-manual"><img src="https://img.shields.io/badge/MCP-33%20typed%20tools-1E4D33" alt="MCP: 33 typed tools"></a>
   <a href="#install"><img src="https://img.shields.io/badge/python-3.12%2B-2F7E52" alt="Python 3.12+"></a>
   <a href="#the-token-bill-is-the-product"><img src="https://img.shields.io/badge/tokens-watched%20per%20call-2F7E52" alt="Tokens watched per call"></a>
@@ -27,7 +28,7 @@ grading its own work so the rework surfaces late.
 Kyzo Plan is a control plane built to starve that waste. It keeps the state of work in the one
 place you and your agents read without translation — a GitHub Projects board. Not a mirror of the
 plan: **the plan.** You read it as a kanban board with roll-up progress bars; your agents operate
-it as 33 typed MCP tools inside Claude Code, through contracts, gates, and scoped surfaces that
+it as 33 typed MCP tools in Claude Code and Cursor, through contracts, gates, and scoped surfaces that
 make the cheap path and the correct path the same path:
 
 <p align="center"><img src="docs/assets/glance.svg" width="860" alt="Kyzo Plan at a glance: one board one axis, horizons live on epics, a grammar not a manual, gated against git itself, a checked box is earned, watched at the call."></p>
